@@ -1,7 +1,18 @@
 # website
 Trying to document my skills on a github hosted website
 
+#Service I offer to my clients
+#Need to tag relevant repos in below section.
 
+Design and 3D modelling
+Reverse Engineer (Cloning Tech)
+Robotics Solution
+Android apps(Based on Flutter/Dart/JavaScript)
+Web apps  (AI/ML powered)
+IOT Solutions (Cloning existing IOT solution)
+
+
+https://docs.google.com/presentation/d/1V0t8cn0HkItHmzigD8J8lSCkguHbLy9KEv0eSzNwtlo/edit#slide=id.g2124186dac4_0_0
 
 #Reference 
 
