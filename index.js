@@ -125,13 +125,16 @@ function renderRepos(limit=24) {
   }
 }
 
-function bindUI() {
+function bindProjectUI() {
   document.querySelectorAll('.chip').forEach(chip => {
     chip.addEventListener('click', () => {
-      document.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
-      chip.classList.add('active');
-      currentFilter = chip.dataset.filter;
-      applyFilters();
+      // When used in Projects, chip has data-filter
+      if (chip.dataset.filter) {
+        document.querySelectorAll('[data-filter]').forEach(c => c.classList.remove('active'));
+        chip.classList.add('active');
+        currentFilter = chip.dataset.filter;
+        applyFilters();
+      }
     });
   });
   const search = document.getElementById('search');
@@ -141,16 +144,58 @@ function bindUI() {
   });
 }
 
+// ---- Credentials ----
+const CREDENTIALS = [
+  { type:'cert', title:'Google Associate Cloud Engineer', issuer:'Google Cloud', period:'Dec 2022 – Dec 2025', credentialId:'4e7504ad5270…e44', verifyUrl:'', tags:['GCP','Cloud'] },
+  { type:'cert', title:'Professional Machine Learning Engineer', issuer:'Google Cloud (Institute)', period:'Jan 2023 – Jun 2025', credentialId:'Provided by user', verifyUrl:'', tags:['GCP','ML'] },
+  { type:'cert', title:'AZ-400: Azure DevOps Specialist', issuer:'Cloud Academy', period:'—', credentialId:'—', verifyUrl:'', tags:['Azure','DevOps'] },
+  { type:'cert', title:'Microsoft Certified: Azure Fundamentals (AZ-900)', issuer:'Microsoft', period:'—', credentialId:'DAAB8A0E… • C4972477…', verifyUrl:'', tags:['Azure','Fundamentals'] },
+  { type:'training', title:'AI Master Class', issuer:'Pantech Solutions', period:'Jan 2020', credentialId:'—', verifyUrl:'', tags:['AI','Training'] },
+  { type:'training', title:'RPA Foundation & Orchestrator', issuer:'Futureskills Prime', period:'—', credentialId:'—', verifyUrl:'', tags:['RPA','Automation'] }
+];
+
+let credFilter = 'cert';
+
+function renderCredentials() {
+  const grid = document.getElementById('cred-grid');
+  if (!grid) return;
+  const list = CREDENTIALS.filter(c => c.type === credFilter);
+  grid.innerHTML = list.map(c => `
+    <article class="cred-card">
+      <div class="cred-title">${c.title}</div>
+      <div class="cred-meta">${c.issuer}${c.period ? ' • ' + c.period : ''}</div>
+      ${c.credentialId && c.credentialId !== '—' ? `<div class="badge">ID: ${c.credentialId}</div>` : ''}
+      <div class="tags">${(c.tags||[]).map(t => `<span class="tag">${t}</span>`).join(' ')}</div>
+    </article>
+  `).join('');
+}
+
+function bindCredentialUI() {
+  document.querySelectorAll('[data-credfilter]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('[data-credfilter]').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      credFilter = btn.dataset.credfilter;
+      renderCredentials();
+    });
+  });
+}
+
 (async function init() {
-  bindUI();
+  // Projects
+  bindProjectUI();
   try {
     const repos = await fetchRepos();
-    // Topics often require extra API calls; we use name/description heuristics to categorize.
-    allRepos = repos.filter(r => !r.fork); // show originals by default
+    allRepos = repos.filter(r => !r.fork);
     const summary = summarize(allRepos);
     renderStats(summary);
     applyFilters();
   } catch (e) {
     const grid = document.getElementById('repo-grid');
     if (grid) grid.innerHTML = '<p>Unable to load repositories at the moment.</p>';
-    console.error
+    console.error(e);
+  }
+  // Credentials
+  bindCredentialUI();
+  renderCredentials();
+})();
