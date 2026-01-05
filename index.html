@@ -1,480 +1,135 @@
-<!--index.html-->
 
-<!DOCTYPE html> 
-<html lang="en"> 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Manas Mohanty — AI for Sustainability</title>
+  <meta name="description" content="AI/ML, IoT, Design, Robotics — projects and experiments by Manas Mohanty focused on making people and ecosystems more sustainable." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="index.css" />
+  <script defer src="index.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav container">
+      <a class="brand" href="#home" aria-label="Home">Manas Mohanty</a>
+      <button id="hamburger" class="hamburger" aria-label="Toggle navigation" aria-expanded="false">
+        <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+      </button>
+      <ul class="menu" role="menubar">
+        <li><a href="#home" role="menuitem">Home</a></li>
+        <li><a href="#impact" role="menuitem">Impact</a></li>
+        <li><a href="#repos" role="menuitem">Projects</a></li>
+        <li><a href="#about" role="menuitem">About</a></li>
+        <li><a href="#contact" role="menuitem">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
 
-<head> 
-    <meta charset="UTF-8"> 
-    <meta name="viewport"
-        content="width=device-width, initial-scale=1.0"> 
-    <title>My Portfolio</title> 
-    <link rel="stylesheet"
-        href= 
-"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
-        integrity= 
-"sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
-            crossorigin="anonymous" referrerpolicy="no-referrer" /> 
-    <link rel="stylesheet" href="style.css"> 
-    <link rel="stylesheet" href="responsive.css"> 
-</head> 
+  <section id="home" class="hero">
+    <div class="container hero-content">
+      <h1>AI for <span class="accent">Sustainability</span></h1>
+      <p class="lede">I build practical AI/ML, IoT, and Robotics solutions aimed at helping people live more sustainably and organizations reduce their environmental footprint.</p>
+      <div class="cta">
+        <a class="btn primary" href="#repos">Explore Projects</a>
+        <a class="btn ghost" href="https://github.com/ManuK001" target="_blank" rel="noopener">View GitHub</a>
+      </div>
+      <div class="hero-stats" id="hero-stats" aria-live="polite">
+        <!-- Filled dynamically with summarized repository counts -->
+      </div>
+    </div>
+    <div class="hero-bg" aria-hidden="true"></div>
+  </section>
 
-<body> 
-    <!-- Navbar header section -->
-    <header class="header"> 
-        <nav class="navbar"> 
-            <div class="logo"> 
-                <h2 class="logo-heading">Manas Mohanty</h2> 
-            </div> 
-            <div class="hamburger" id="hamburger"> 
-                <i class="fas fa-bars hamburger-icon"></i> 
-                <i class="fas fa-times cross-icon"></i> 
-            </div> 
-            <div class="menu"> 
-                <ul class="menu-list"> 
-                    <li class="menu-list-items"> 
-                        <a class="links" href="#home"> 
-                            Home 
-                        </a> 
-                    </li> 
-                    <li class="menu-list-items"> 
-                        <a class="links" href="#portfolio"> 
-                            Portfolio 
-                        </a> 
-                    </li> 
-                    <li class="menu-list-items"> 
-                        <a class="links" href="#about"> 
-                            About 
-                        </a> 
-                    </li> 
-                    <li class="menu-list-items"> 
-                        <a class="links" href="#services"> 
-                            Services 
-                        </a> 
-                    </li> 
-                    <li class="menu-list-items"> 
-                        <a class="links" href="#contact"> 
-                            Contact Me 
-                        </a> 
-                    </li> 
-                </ul> 
-            </div> 
-        </nav> 
-    </header> 
+  <section id="impact" class="impact container">
+    <h2 class="section-title">Practical Impact Areas</h2>
+    <div class="impact-grid">
+      <article class="card">
+        <h3>AI/ML</h3>
+        <p>Models, agents, and workflows that turn data into actions — from climate insights to resource optimization.</p>
+      </article>
+      <article class="card">
+        <h3>IoT</h3>
+        <p>Sensors and edge computing that observe, measure, and automate for energy efficiency and safety.</p>
+      </article>
+      <article class="card">
+        <h3>Design</h3>
+        <p>Human-centered, accessible interfaces that make sustainable choices the default choice.</p>
+      </article>
+      <article class="card">
+        <h3>Robotics</h3>
+        <p>Autonomous systems for inspection, assistance, and maintenance to reduce waste and risk.</p>
+      </article>
+    </div>
+  </section>
 
-    <!-- Main hero banner -->
-    <section id="home" class="hero"> 
-        <div class="intro"> 
-            <div class="headings"> 
-                <h3 class="greet-heading">Hello, I'm</h3> 
-                <h1 class="my-heading">Manas Ranjan Mohanty</h1> 
-                <h4 class="sub-heading"> 
-                    A Software Engineer with 4 years of Experience in AI-ML/Robotics/Azure Cloud. 
-                </h4> 
-            </div> 
-            <div class="intro-buttons"> 
-                <button class="btn common-btn">Hire Me</button> 
-                <button class="btn ghost-btn">Get Resume</button> 
-            </div> 
-        </div> 
-    </section> 
+  <section id="repos" class="projects container">
+    <div class="projects-head">
+      <h2 class="section-title">Projects</h2>
+      <div class="controls">
+        <input id="search" type="search" placeholder="Search repositories…" aria-label="Search repositories" />
+        <div class="filters" role="group" aria-label="Category filters">
+          <button class="chip active" data-filter="all">All</button>
+          <button class="chip" data-filter="ai">AI/ML</button>
+          <button class="chip" data-filter="iot">IoT</button>
+          <button class="chip" data-filter="design">Design</button>
+          <button class="chip" data-filter="robotics">Robotics</button>
+          <button class="chip" data-filter="azure">Azure/Cloud</button>
+          <button class="chip" data-filter="other">Other</button>
+        </div>
+      </div>
+    </div>
+    <div id="repo-grid" class="repo-grid" aria-live="polite">
+      <!-- Cards populated dynamically -->
+    </div>
+    <div id="load-more" class="load-more hidden">
+      <button class="btn" id="loadMoreBtn">Load more</button>
+    </div>
+  </section>
 
-    <!-- Portfolio Section -->
-    <section class="portfolio" id="portfolio"> 
-        <div class="portfolio-heading"> 
-            <h1 class="my-heading text-center">Featured Portfolio</h1> 
-        </div> 
-        <div class="portfolio-content"> 
-            <div class="my-row"> 
-                <div class="my-col"> 
-                    <div class="my-card port-card"> 
-                        <div class="image"> 
-                            <img src="./Images/designImage2.avif"
-                                alt="Web Design Image"> 
-                        </div> 
-                        <h3 class="greet-heading blue-text">Web Design</h3> 
-                        <p class="small-para blue-text">Designing</p> 
-                    </div> 
-                </div> 
-                <div class="my-col"> 
-                    <div class="my-card port-card"> 
-                        <div class="image"> 
-                            <img src="./Images/webDevelopment2.avif"
-                                alt="Web Development Image"> 
-                        </div> 
-                        <h3 class="greet-heading blue-text"> 
-                            Web Development 
-                        </h3> 
-                        <p class="small-para blue-text">Development</p> 
-                    </div> 
-                </div> 
-                <div class="my-col"> 
-                    <div class="my-card port-card"> 
-                        <div class="image"> 
-                            <img src="./Images/SEOImage2.avif" alt="SEO Image"> 
-                        </div> 
-                        <h3 class="greet-heading blue-text">SEO</h3> 
-                        <p class="small-para blue-text">Optimization</p> 
-                    </div> 
-                </div> 
-            </div> 
-            <div class="my-row"> 
-                <div class="my-col"> 
-                    <div class="my-card port-card"> 
-                        <div class="image"> 
-                            <img src="./Images/contentImage2.avif"
-                                alt="Content Writting Image"> 
-                        </div> 
-                        <h3 class="greet-heading blue-text"> 
-                            Content Writing 
-                        </h3> 
-                        <p class="small-para blue-text">Writing</p> 
-                    </div> 
-                </div> 
-                <div class="my-col"> 
-                    <div class="my-card port-card"> 
-                        <div class="image"> 
-                            <img src="./Images/wordpressImage2.avif"
-                                alt="Wordpress Image"> 
-                        </div> 
-                        <h3 class="greet-heading blue-text"> 
-                            WordPress Dev 
-                        </h3> 
-                        <p class="small-para blue-text"> 
-                            Content Management System 
-                        </p> 
-                    </div> 
-                </div> 
-                <div class="my-col"> 
-                    <div class="my-card port-card"> 
-                        <div class="image"> 
-                            <img src="./Images/videoEditing2.avif"
-                                alt="Video Editing Image"> 
-                        </div> 
-                        <h3 class="greet-heading blue-text"> 
-                            Video Editing 
-                        </h3> 
-                        <p class="small-para blue-text">Editing</p> 
-                    </div> 
-                </div> 
-            </div> 
-        </div> 
-    </section> 
+  <section id="about" class="about container">
+    <h2 class="section-title">About</h2>
+    <p>Technical Analyst at Quadrant Technologies. I support AI & IoT initiatives on Azure, with a focus on sustainable outcomes. Recent work includes deploying Azure AI Foundry and IOT components, AI Search, and secure infrastructure via Terraform & Bicep, leveraging managed identities and RBAC.</p>
+  </section>
 
-    <!-- About Section -->
-    <section id="about" class="about"> 
-        <div class="about-text"> 
-            <h1 class="my-heading">About Me</h1> 
-            <p class="lead-para"> 
-                GeeksforGeeks is a leading platform 
-                that provides computer science 
-                resources and coding challenges for 
-                programmers and technology 
-                enthusiasts, along with interview 
-                and exam preparations for upcoming 
-                aspirants. With a strong emphasis on 
-                enhancing coding skills and knowledge, 
-                it has become a trusted destination 
-                for over 12 million plus registered 
-                users worldwide. The platform offers 
-                a vast collection of tutorials, practice 
-                problems, interview tutorials, articles, 
-                and courses, covering various domains 
-                of computer science. 
-            </p> 
-            <p> 
-                Our exceptional mentors hailing from top 
-                colleges & organizations have the 
-                ability to guide you on a journey from 
-                the humble beginnings of coding to 
-                the pinnacle of expertise. Under their 
-                guidance watch your skills flourish 
-                as we lay the foundation and help you 
-                conquer the world of coding. 
-            </p> 
-        </div> 
-        <div class="about-image"> 
-            <img src="./Images/heroImg2.avif" alt="About Image"> 
-        </div> 
-    </section> 
+  <section id="contact" class="contact container">
+    <h2 class="section-title">Contact</h2>
+    <div class="contact-grid">
+      <div>
+        <p>Let’s collaborate on practical solutions that help people and the planet.</p>
+        <ul class="link-list">
+          <li><a href="https://github.com/ManuK001" target="_blank" rel="noopener">GitHub: @ManuK001</a></li>
+          <li><a href="https://www.quadranttechnologies.com/" target="_blank" rel="noopener">Quadrant Technologies</a></li>
+          <li><a href="https://www.linkedin.com/in/manas-mohanty-524254ab" target="_blank" rel="noopener">LinkedIn</a></li>
+        </ul>
+      </div>
+      <!-- Replace the Formspree endpoint with your own if needed -->
+      <form class="contact-form" action="https://formspree.io/f/mvoygqyk" method="POST">
+        <label>
+          <span>Name</span>
+          <input name="name" required />
+        </label>
+        <label>
+          <span>Email</span>
+          <input type="email" name="email" required />
+        </label>
+        <label>
+          <span>Message</span>
+          <textarea name="message" rows="4" required></textarea>
+        </label>
+        <button class="btn primary" type="submit">Send</button>
+      </form>
+    </div>
+  </section>
 
-    <!-- Services Section -->
-    <section class="services" id="services"> 
-        <div class="services-heading"> 
-            <h1 class="my-heading text-center">My Services</h1> 
-        </div> 
-        <div class="services-content"> 
-            <div class="my-row"> 
-                <div class="my-col"> 
-                    <div class="my-card"> 
-                        <div class="icon"> 
-                            <i class="fas fa-paint-brush"></i> 
-                        </div> 
-                        <h3 class="greet-heading blue-text">Web Design</h3> 
-                        <p class="small-para"> 
-                            Web development refers to the creating, 
-                            building, and maintaining 
-                            of websites. It includes aspects such as 
-                            web design, web publishing, 
-                            web programming, and database management. 
-                            It is the creation of an 
-                            application that works over the internet 
-                            i.e. websites. 
-                        </p> 
-                        <p class="small-para"> 
-                            Web development refers to the creating, 
-                            building, and maintaining 
-                            of websites. It includes aspects such as 
-                            web design, web publishing, 
-                            web programming, and database management. 
-                            It is the creation of an 
-                            application that works over the internet 
-                            i.e. websites. 
-                        </p> 
-                    </div> 
-                </div> 
-                <div class="my-col"> 
-                    <div class="my-card"> 
-                        <div class="icon"> 
-                            <i class="fa-solid fa-code"></i> 
-                        </div> 
-                        <h3 class="greet-heading blue-text"> 
-                            Web Development 
-                        </h3> 
-                        <p class="small-para"> 
-                            Web development refers to the creating, 
-                            building, and maintaining 
-                            of websites. It includes aspects such as 
-                            web design, web publishing, 
-                            web programming, and database management. 
-                            It is the creation of an 
-                            application that works over the internet 
-                            i.e. websites. 
-                        </p> 
-                        <p class="small-para"> 
-                            Web development refers to the creating, 
-                            building, and maintaining 
-                            of websites. It includes aspects such as 
-                            web design, web publishing, 
-                            web programming, and database management. 
-                            It is the creation of an 
-                            application that works over the internet 
-                            i.e. websites. 
-                        </p> 
-                    </div> 
-                </div> 
-                <div class="my-col"> 
-                    <div class="my-card"> 
-                        <div class="icon"> 
-                            <i class="fas fa-chart-line"></i> 
-                        </div> 
-                        <h3 class="greet-heading blue-text">SEO</h3> 
-                        <p class="small-para"> 
-                            Web development refers to the creating, 
-                            building, and maintaining 
-                            of websites. It includes aspects such as 
-                            web design, web publishing, 
-                            web programming, and database management. 
-                            It is the creation of an 
-                            application that works over the internet 
-                            i.e. websites. 
-                        </p> 
-                        <p class="small-para"> 
-                            Web development refers to the creating, 
-                            building, and maintaining 
-                            of websites. It includes aspects such as 
-                            web design, web publishing, 
-                            web programming, and database management. 
-                            It is the creation of an 
-                            application that works over the internet 
-                            i.e. websites. 
-                        </p> 
-                    </div> 
-                </div> 
-            </div> 
-            <div class="my-row"> 
-                <div class="my-col"> 
-                    <div class="my-card"> 
-                        <div class="icon"> 
-                            <i class="fas fa-quote-left"></i> 
-                        </div> 
-                        <h3 class="greet-heading blue-text"> 
-                            Content Writting 
-                        </h3> 
-                        <p class="small-para"> 
-                            Web development refers to the creating, 
-                            building, and maintaining of websites. 
-                            It includes aspects such as web design, 
-                            web publishing, web programming, and 
-                            database management. It is the creation 
-                            of an application that works over the 
-                            internet i.e. websites. 
-                        </p> 
-                        <p class="small-para"> 
-                            Web development refers to the creating, 
-                            building, and maintaining of websites. 
-                            It includes aspects such as web design, 
-                            web publishing, web programming, and 
-                            database management. It is the creation of an 
-                            application that works over the internet i.e. 
-                            websites. 
-                        </p> 
-                    </div> 
-                </div> 
-                <div class="my-col"> 
-                    <div class="my-card"> 
-                        <div class="icon"> 
-                            <i class="fab fa-wordpress-simple"></i> 
-                        </div> 
-                        <h3 class="greet-heading blue-text"> 
-                            WordPress Dev 
-                        </h3> 
-                        <p class="small-para"> 
-                            Web development refers to the creating, 
-                            building, and maintaining of websites. 
-                            It includes aspects such as web design, 
-                            web publishing, web programming, and 
-                            database management. It is the creation 
-                            of an application that works over the 
-                            internet i.e. websites. 
-                        </p> 
-                        <p class="small-para"> 
-                            Web development refers to the creating, 
-                            building, and maintaining 
-                            of websites. It includes aspects such as 
-                            web design, web publishing, 
-                            web programming, and database management. 
-                            It is the creation of an 
-                            application that works over the internet 
-                            i.e. websites. 
-                        </p> 
-                    </div> 
-                </div> 
-                <div class="my-col"> 
-                    <div class="my-card"> 
-                        <div class="icon"> 
-                            <i class="fas fa-video"></i> 
-                        </div> 
-                        <h3 class="greet-heading blue-text"> 
-                            Video Editing 
-                        </h3> 
-                        <p class="small-para"> 
-                            Web development refers to the creating, 
-                            building, and maintaining 
-                            of websites. It includes aspects such as 
-                            web design, web publishing, 
-                            web programming, and database management. 
-                            It is the creation of an 
-                            application that works over the internet 
-                            i.e. websites. 
-                        </p> 
-                        <p class="small-para"> 
-                            Web development refers to the creating, 
-                            building, and maintaining 
-                            of websites. It includes aspects such as 
-                            web design, web publishing, 
-                            web programming, and database management. 
-                            It is the creation of an 
-                            application that works over the internet 
-                            i.e. websites. 
-                        </p> 
-                    </div> 
-                </div> 
-            </div> 
-        </div> 
-    </section> 
-
-    <!-- Contact me section -->
-    <section class="contact" id="contact"> 
-        <div class="contact-heading"> 
-            <h1 class="my-heading text-center">Contact Me</h1> 
-        </div> 
-        <div class="contact-content"> 
-            <div class="contact-form-container"> 
-                <h1 class="greet-heading">Get In Touch</h1> 
-                <form class="contact-form"> 
-                    <input class="form-controls" type="text"
-                        placeholder="Your Name"> 
-                    <input class="form-controls" type="text"
-                        placeholder="Your Email"> 
-                    <input class="form-controls" type="text"
-                        placeholder="Your Phone"> 
-                    <textarea class="form-controls"
-                            placeholder="Write your message"
-                            name="message" id="" cols="30"
-                            rows="10"> 
-                    </textarea> 
-                    <input class="form-btn btn common-btn"
-                        type="submit" value="Send Message"> 
-                </form> 
-            </div> 
-            <div class="contact-details"> 
-                <h1 class="greet-heading">My Contact Details</h1> 
-                <div class="details"> 
-                    <h5 class="contact-heading">EMAIL</h5> 
-                    <p class="contact-text">example@gmail.com</p> 
-                </div> 
-                <div class="details"> 
-                    <h5 class="contact-heading">PHONE</h5> 
-                    <p class="contact-text">+91 0123456789</p> 
-                </div> 
-                <div class="details"> 
-                    <h5 class="contact-heading">FAX</h5> 
-                    <p class="contact-text">+91 0123456789</p> 
-                </div> 
-                <div class="details"> 
-                    <h5 class="contact-heading">ADDRESS</h5> 
-                    <p class="contact-text">Bengalure, HosaRoad</p> 
-                    <p>Oppositie to Bosch Main gate 3</p> 
-                    <p>Hosa Road, Electronic city</p> 
-                </div> 
-            </div> 
-        </div> 
-    </section> 
-
-    <!-- Footer section -->
-    <footer class="footer"> 
-        <div class="footer-content text-center"> 
-            <h4> 
-                Copyright © 2023 All rights reserved | 
-                This portfolio website template is created 
-                by GeeksforGeeks. 
-            </h4> 
-            <div class="social-links"> 
-                <div class="footer-menu"> 
-                    <ul class="footer-menu-list"> 
-                        <li class="footer-list-items"> 
-                            <a class="footer-links" href="#"> 
-                                <i class="fab fa-facebook-f"></i> 
-                            </a> 
-                        </li> 
-                        <li class="footer-list-items"> 
-                            <a class="footer-links" href="#"> 
-                                <i class="fab fa-twitter"></i> 
-                            </a> 
-                        </li> 
-                        <li class="footer-list-items"> 
-                            <a class="footer-links" href="#"> 
-                                <i class="fab fa-instagram"></i> 
-                            </a> 
-                        </li> 
-                        <li class="footer-list-items"> 
-                            <a class="footer-links" href="#"> 
-                                <i class="fab fa-linkedin-in"></i> 
-                            </a> 
-                        </li> 
-                    </ul> 
-                </div> 
-            </div> 
-        </div> 
-    </footer> 
-
-    <script src= 
-"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/js/all.min.js"
-        integrity= 
-"sha512-uKQ39gEGiyUJl4AI6L+ekBdGKpGw4xJ55+xyJG7YFlJokPNYegn9KwQ3P8A7aFQAUtUsAQHep+d/lrGqrbPIDQ=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"> 
-    </script> 
-    <script src="script.js"></script> 
-</body> 
-
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <small>© <span id="year"></span> Manas Mohanty. Skills forged for sustainability in tech.</small>
+      <a class="to-top" href="#home" aria-label="Back to top">↑</a>
+    </div>
+  </footer>
+</body>
 </html>
