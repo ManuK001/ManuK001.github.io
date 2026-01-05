@@ -46,6 +46,7 @@ body {
 
 /* Impact cards */
 .section-title { font-weight:700; margin: 2rem 0 1rem; }
+.muted { color: var(--muted); }
 .impact-grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap:1rem; }
 .card { background: var(--card); border:1px solid #1b2344; border-radius:12px; padding:1rem; }
 .card h3 { margin:0 0 0.3rem; }
@@ -70,6 +71,14 @@ body {
 
 .load-more { display:flex; justify-content:center; margin:1rem 0; }
 .hidden { display:none; }
+
+/* Credentials */
+.credentials .cred-tabs { display:flex; gap:0.4rem; margin:0.75rem 0 0.5rem; }
+.cred-grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap:1rem; }
+.cred-card { background: var(--card); border:1px solid #1b2344; border-radius:12px; padding:1rem; }
+.cred-title { font-weight:600; }
+.cred-meta { color: var(--muted); font-size:0.9rem; }
+.badge { display:inline-block; margin-top:0.4rem; padding:0.2rem 0.5rem; border-radius:6px; border:1px solid #273057; background:#0d1530; color:#98a6c9; font-size:0.75rem; }
 
 /* About & Contact */
 .about p { color: var(--muted); }
