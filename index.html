@@ -23,6 +23,7 @@
         <li><a href="#home" role="menuitem">Home</a></li>
         <li><a href="#impact" role="menuitem">Impact</a></li>
         <li><a href="#repos" role="menuitem">Projects</a></li>
+        <li><a href="#credentials" role="menuitem">Credentials</a></li>
         <li><a href="#about" role="menuitem">About</a></li>
         <li><a href="#contact" role="menuitem">Contact</a></li>
       </ul>
@@ -37,9 +38,7 @@
         <a class="btn primary" href="#repos">Explore Projects</a>
         <a class="btn ghost" href="https://github.com/ManuK001" target="_blank" rel="noopener">View GitHub</a>
       </div>
-      <div class="hero-stats" id="hero-stats" aria-live="polite">
-        <!-- Filled dynamically with summarized repository counts -->
-      </div>
+      <div class="hero-stats" id="hero-stats" aria-live="polite"></div>
     </div>
     <div class="hero-bg" aria-hidden="true"></div>
   </section>
@@ -82,17 +81,25 @@
         </div>
       </div>
     </div>
-    <div id="repo-grid" class="repo-grid" aria-live="polite">
-      <!-- Cards populated dynamically -->
-    </div>
+    <div id="repo-grid" class="repo-grid" aria-live="polite"></div>
     <div id="load-more" class="load-more hidden">
       <button class="btn" id="loadMoreBtn">Load more</button>
     </div>
   </section>
 
+  <section id="credentials" class="credentials container">
+    <h2 class="section-title">Credentials</h2>
+    <p class="muted">Selected certifications and trainings. Sensitive IDs are lightly masked.</p>
+    <div class="cred-tabs" role="tablist" aria-label="Credentials tabs">
+      <button class="chip active" data-credfilter="cert">Certifications</button>
+      <button class="chip" data-credfilter="training">Training</button>
+    </div>
+    <div id="cred-grid" class="cred-grid" aria-live="polite"></div>
+  </section>
+
   <section id="about" class="about container">
     <h2 class="section-title">About</h2>
-    <p>Technical Analyst at Quadrant Technologies. I support AI & IoT initiatives on Azure, with a focus on sustainable outcomes. Recent work includes deploying Azure AI Foundry and IOT components, AI Search, and secure infrastructure via Terraform & Bicep, leveraging managed identities and RBAC.</p>
+    <p>Technical Analyst at Quadrant Technologies. I support AI & IoT initiatives on Azure, with a focus on sustainable outcomes. Recent work includes deploying Azure AI Foundry components, AI Search, and secure infrastructure via Terraform & Bicep, leveraging managed identities and RBAC.</p>
   </section>
 
   <section id="contact" class="contact container">
@@ -106,7 +113,6 @@
           <li><a href="https://www.linkedin.com/in/manas-mohanty-524254ab" target="_blank" rel="noopener">LinkedIn</a></li>
         </ul>
       </div>
-      <!-- Replace the Formspree endpoint with your own if needed -->
       <form class="contact-form" action="https://formspree.io/f/mvoygqyk" method="POST">
         <label>
           <span>Name</span>
@@ -127,7 +133,7 @@
 
   <footer class="site-footer">
     <div class="container footer-inner">
-      <small>© <span id="year"></span> Manas Mohanty. Skills forged for sustainability in tech.</small>
+      <small>© <span id="year"></span> Manas Mohanty. Built with GitHub Pages — made for sustainability in tech.</small>
       <a class="to-top" href="#home" aria-label="Back to top">↑</a>
     </div>
   </footer>
