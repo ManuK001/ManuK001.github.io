@@ -199,3 +199,138 @@ function bindCredentialUI() {
   bindCredentialUI();
   renderCredentials();
 })();
+
+// ===============================
+// YouTube + Microsoft Learn Threads
+// ===============================
+
+// 1) Put your featured VIDEO IDs here.
+// Tip: a YouTube URL like https://www.youtube.com/watch?v=ABC123 has ID = ABC123
+// Shorts look like https://www.youtube.com/shorts/XYZ789 -> ID = XYZ789
+const FEATURED_YT_VIDEO_IDS = [
+  // Replace these placeholders with real IDs from @Segmentsoflives
+  "VIDEO_ID_1",
+  "VIDEO_ID_2",
+  "VIDEO_ID_3"
+];
+
+const FEATURED_YT_SHORT_IDS = [
+  // Replace these placeholders with real short IDs from @Segmentsoflives/shorts
+  "SHORT_ID_1",
+  "SHORT_ID_2",
+  "SHORT_ID_3"
+];
+
+// 2) Thumbnail “screenshots” grid will use maxres thumbnail if available, else it still works.
+function ytThumbUrl(id) {
+  return `https://img.youtube.com/vi/${id}/maxresdefault.jpg`;
+}
+
+function ytWatchUrl(id) {
+  return `https://www.youtube.com/watch?v=${id}`;
+}
+
+function ytEmbedUrl(id) {
+  return `https://www.youtube.com/embed/${id}`;
+}
+
+// 3) Optional: fetch title without API key using YouTube oEmbed.
+// (Works for many sites; if it fails due to browser restrictions, we fall back gracefully.)
+async function fetchYtTitle(id) {
+  try {
+    const url = `https://www.youtube.com/oembed?format=json&url=${encodeURIComponent(ytWatchUrl(id))}`;
+    const res = await fetch(url);
+    if (!res.ok) throw new Error("oEmbed failed");
+    const data = await res.json();
+    return data.title || "";
+  } catch (e) {
+    return "";
+  }
+}
+
+async function renderYouTube() {
+  const embedsEl = document.getElementById("yt-embeds");
+  const thumbsEl = document.getElementById("yt-thumbs");
+  if (!embedsEl || !thumbsEl) return;
+
+  // Render embedded videos
+  embedsEl.innerHTML = "";
+  for (const id of FEATURED_YT_VIDEO_IDS) {
+    const title = await fetchYtTitle(id);
+
+    const card = document.createElement("div");
+    card.className = "yt-embed";
+
+    card.innerHTML = `
+      <iframe
+        src="${ytEmbedUrl(id)}"
+        title="${(title || "YouTube video")}"
+        loading="lazy"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen
+      ></iframe>
+      <div class="yt-title">${title ? title : `YouTube Video: ${id}`}</div>
+    `;
+    embedsEl.appendChild(card);
+  }
+
+  // Render thumbnail “screenshots” (videos + shorts)
+  const allThumbs = [
+    ...FEATURED_YT_VIDEO_IDS.map(id => ({ id, label: "Video" })),
+    ...FEATURED_YT_SHORT_IDS.map(id => ({ id, label: "Short" }))
+  ];
+
+  thumbsEl.innerHTML = "";
+  for (const item of allThumbs) {
+    const a = document.createElement("a");
+    a.className = "yt-thumb";
+    a.href = ytWatchUrl(item.id);
+    a.target = "_blank";
+    a.rel = "noopener";
+
+    a.innerHTML = `
+      <img src="${ytThumbUrl(item.id)}" alt="YouTube thumbnail ${item.id}" loading="lazy" />
+      <span class="badge">${item.label}</span>
+    `;
+    thumbsEl.appendChild(a);
+  }
+}
+
+// 4) Load last 20 “threads” from a JSON file you maintain.
+// Create: /data/threads.json
+// Format: [{ "title": "...", "url": "..." }, ...]
+async function renderThreadsCodeBlock() {
+  const codeEl = document.getElementById("threads-code");
+  if (!codeEl) return;
+
+  try {
+    const res = await fetch("data/threads.json", { cache: "no-store" });
+    if (!res.ok) throw new Error("threads.json not found");
+    const threads = await res.json();
+
+    // Create a nice code-block view
+    // Example output lines:
+    // 01. Title — URL
+    const lines = threads.slice(0, 20).map((t, i) => {
+      const n = String(i + 1).padStart(2, "0");
+      return `${n}. ${t.title} — ${t.url}`;
+    });
+
+    codeEl.textContent = lines.join("\n");
+  } catch (e) {
+    codeEl.textContent =
+`Could not load data/threads.json yet.
+
+Create a file at: /data/threads.json
+Example:
+[
+  { "title": "How to configure X in Azure?", "url": "https://learn.microsoft.com/..." },
+  { "title": "Troubleshooting Y issue", "url": "https://learn.microsoft.com/..." }
+]`;
+  }
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  renderYouTube();
+  renderThreadsCodeBlock();
+});
